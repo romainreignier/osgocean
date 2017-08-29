@@ -652,7 +652,7 @@ void SiltEffect::SiltDrawable::drawImplementation(osg::RenderInfo& renderInfo) c
 #if OSG_VERSION_LESS_THAN(3,3,4)
     const osg::Geometry::Extensions* extensions = osg::Geometry::getExtensions(renderInfo.getContextID(),true);
 #else
-    osg::GLExtensions *extensions = renderInfo.getState()->get<osg::GLExtensions>();
+    const osg::GLExtensions* extensions = renderInfo.getState()->get<osg::GLExtensions>();
 #endif
     
     glPushMatrix();

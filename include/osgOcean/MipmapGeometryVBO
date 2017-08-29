@@ -146,9 +146,9 @@ namespace osgOcean
         * using the offset and the worldSize.
         */
 #if OSG_VERSION_LESS_THAN(3,3,2)
-     osg::BoundingBox computeBound( void ) const;
+        osg::BoundingBox computeBound( void ) const;
 #else
-     osg::BoundingBox computeBoundingBox( void ) const;
+        osg::BoundingBox computeBoundingBox( void ) const;
 #endif
         /** 
         * Set the tile offset for shader positioning.
@@ -168,11 +168,10 @@ namespace osgOcean
             }
             
             dirtyBound();
-#if (OPENSCENEGRAPH_MAJOR_VERSION == 3 && OPENSCENEGRAPH_MINOR_VERSION >=4) \
-     || OPENSCENEGRAPH_MAJOR_VERSION > 3 
-     setBound(computeBoundingBox( ) );
-#else
+#if OSG_VERSION_LESS_THAN(3,3,2)
             setBound( computeBound() );
+#else
+            setBound(computeBoundingBox( ) );
 #endif
         }
 
